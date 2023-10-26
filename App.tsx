@@ -40,6 +40,8 @@ const App = () => {
       :
 
         <Modal
+        transparent
+        animationType="slide"
         onRequestClose={() => {
           setSubmit(true)
         }}
@@ -106,9 +108,8 @@ const myStyle = StyleSheet.create({
     backgroundColor: 'yellow',
     alignItems: 'center',
     height: 200,
-    width: '90%'
-
-
+    width: '90%',
+    
   },
   modalTitle: {
     backgroundColor: 'orange',
