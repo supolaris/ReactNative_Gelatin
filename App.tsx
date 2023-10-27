@@ -1,10 +1,16 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, Image, ImageBackground} from "react-native";
 
 const App = () => {
   return(
-    <View style={myStyle.container}>
+    <ImageBackground style={myStyle.container}       resizeMode="cover"
+    source={require('./assets/cover.jpg') }>
+
       <Text style ={myStyle.text}>Hello world</Text>
-    </View>
+      <Image 
+      style={myStyle.image}
+      source={require('./assets/coding.png')}
+      />
+    </ImageBackground>
   )
 }
 
@@ -15,11 +21,21 @@ const myStyle = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
 
   },
   text: {
-    color: 'balck',
+    color: 'white',
     fontSize: 35,
+    
+  },
+  image: {
+    width: 200,
+    height: 200,
+    resizeMode: 'contain'
+  },
+  backgroundImage: {
+    flex: 1,
+    justifyContent: 'center'
   }
 })
