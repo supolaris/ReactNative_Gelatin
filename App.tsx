@@ -1,10 +1,76 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, StyleSheet, Button} from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import fontAwesome5 from "react-native-vector-icons/FontAwesome5";
+
+
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
+
+
+
+  function ScreenA(){
+
+    return(
+      <View style={myStyle.container}>
+        <Text style={myStyle.text}>
+          Screen A
+        </Text>
+      </View>
+    )
+  }
+
+  function ScreenB(){
+    
+    return(
+      <View style={myStyle.container}>
+        <Text style={myStyle.text}>
+          Screen B
+        </Text>
+      </View>
+    )
+  }
+
+
+
   return(
-    <View style={myStyle.container}>
-      <Text style ={myStyle.text}>Hello world</Text>
-    </View>
+    <NavigationContainer>
+    <Tab.Navigator
+    screenOptions={({route}) => {
+      myIcon: ({focused, size, color}) => {
+        let iconName;
+        if(route.name === "ScreenA"){
+          iconName = "autoPrefixer";
+
+        }
+        else if(route.name === "ScreenB"){
+          iconName = "btc";
+
+        }
+        return(
+          <fontAwesome5 
+          name={iconName}
+          />
+        )
+
+      }
+      
+    }}
+    >
+      <Tab.Screen 
+      name="Screen_A"
+      component={ScreenA}
+      />
+
+      <Tab.Screen 
+      name="Screen_B"
+      component={ScreenB}
+      />
+    </Tab.Navigator>
+    </NavigationContainer>
+    
   )
 }
 
