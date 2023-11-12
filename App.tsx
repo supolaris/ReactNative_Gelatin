@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet} from "react-native";
+import {View, Text, Button, StyleSheet} from "react-native";
 import {NavigationContainer} from "@react-navigation/native";
 import {createStackNavigator} from "@react-navigation/stack";
 
@@ -7,19 +7,44 @@ const App = () => {
 
 
   const Stack = createStackNavigator();
-  function ScreenA() {
+
+
+
+  function ScreenA({navigation}) {
+
+    const onPressHandler = () => {
+      navigation.navigate('Second_Screen')
+    }
+
     return(
-      <View>
-        <Text>Screen A</Text>
+      <View style={myStyle.container}>
+        <Text style={myStyle.text}>Screen A</Text>
+        <Button 
+        onPress={onPressHandler}
+ 
+        title="Go to Screen B"
+        />
       </View>
     )
     
   }
 
-  function ScreenB() {
+  function ScreenB({navigation}) {
+ 
+    const onPressHandler = () => {
+      navigation.navigate('First_Screen')
+    }
+
     return(
-      <View>
-        <Text>Screen B</Text>
+      <View style={myStyle.container}>
+        <Text style={myStyle.text}>Screen B</Text>
+        <Button 
+        onPress={onPressHandler}
+ 
+        title="Go to Screen A"
+        />
+        
+        
       </View>
     )
     
@@ -32,8 +57,14 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen
 
-        name="First Screen"
+        name="First_Screen"
         component={ScreenA}
+        />
+
+        <Stack.Screen
+
+        name="Second_Screen"
+        component={ScreenB}
         />
       </Stack.Navigator>
 
